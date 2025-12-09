@@ -25,8 +25,7 @@ export default function Artists() {
     return (
         <section className="w-full py-24 bg-gradient-to-b from-black via-gray-900 to-black text-white">
             <h2
-                className="text-center text-2xl md:text-4xl font-extrabold uppercase 
-  bg-gradient-to-r from-red-500 to-yellow-300 
+                className="text-center text-2xl md:text-4xl font-extrabold uppercase bg-gradient-to-r from-red-500 to-yellow-300 
   bg-clip-text text-transparent 
   drop-shadow-[0_0_45px_rgba(255,0,0,0.9)]
   tracking-[0.25em] mb-20"
