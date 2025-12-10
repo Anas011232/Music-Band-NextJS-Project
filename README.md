@@ -71,6 +71,11 @@ Server-side rendering, optimized assets, and fast loading pages.
 
 ---
 
+## 🎵 Music Section Preview
+
+![Music Section](https://raw.githubusercontent.com/Anas011232/Music-Band-NextJS-Project/main/public/music.png)  
+*Interactive music section with albums and tracks*
+
 
 
 
