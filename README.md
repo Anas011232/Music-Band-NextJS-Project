@@ -1,6 +1,7 @@
 # 🎵 Music Band Portfolio Using Next.js
 
-![Music Band Banner](https://via.placeholder.com/1200x400?text=Music+Band+NextJS+Project)
+![Music Band Banner](https://raw.githubusercontent.com/Anas011232/Music-Band-NextJS-Project/main/public/banner.png)
+
 
 Welcome to the **Music Band Next.js Project** – a modern, interactive, and visually stunning web application built using **Next.js**, **React**, and **Tailwind CSS**.  
 Explore a band's discography, dive into track details, and enjoy a seamless streaming experience on **desktop and mobile**.
@@ -45,8 +46,6 @@ Designed for music enthusiasts and bands who want to showcase their discography 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) 
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white) 
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) 
-![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white) 
-![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
 
 ---
 
@@ -72,33 +71,8 @@ Server-side rendering, optimized assets, and fast loading pages.
 
 ---
 
-## 🗂️ Project Structure
-
-/albumsData.js # JSON data of albums and tracks
-/pages # Next.js pages
-├─ index.jsx # Home / Landing page
-├─ music # Music page with all albums
-├─ [year].jsx # Dynamic album detail page
-/components # Reusable UI components
-├─ Navbar.jsx # Navigation bar
-├─ Footer.jsx # Footer
-├─ AlbumCard.jsx # Individual album card
-├─ TrackCard.jsx # Individual track card
-/public # Images, assets, favicon
-/globals.css # Tailwind global styles
-/layout.jsx # Main layout
-/next.config.js # Next.js config
-/package.json # Dependencies & scripts
 
 
-## 🖼️ Screenshots
 
-![Album Page](https://via.placeholder.com/800x500?text=Album+Page+Screenshot)  
-*Album details page with tracklist and streaming links*
 
-![Track Details](https://via.placeholder.com/800x500?text=Track+Details+Screenshot)  
-*Interactive track detail panel with Spotify and YouTube links*
-
-![Responsive Design](https://via.placeholder.com/800x500?text=Mobile+Responsive+Screenshot)  
-*Fully responsive layout for mobile and tablet devices*
 
