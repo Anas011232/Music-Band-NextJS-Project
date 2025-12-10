@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
-import emailjs from "emailjs-com";
+// emailjs import commented for now
+// import emailjs from "emailjs-com";
 
 export default function ContactPage() {
   const [success, setSuccess] = useState("");
@@ -11,24 +12,10 @@ export default function ContactPage() {
     e.preventDefault();
     setSuccess("");
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",   // Replace with your EmailJS Service ID
-        "YOUR_TEMPLATE_ID",  // Replace with your EmailJS Template ID
-        e.target,
-        "YOUR_PUBLIC_KEY"    // Replace with your EmailJS Public Key / User ID
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setSuccess("Message sent successfully!");
-          e.target.reset();
-        },
-        (error) => {
-          console.log(error.text);
-          setSuccess("Failed to send message!");
-        }
-      );
+    // If EmailJS keys added later, replace this section with emailjs.sendForm(...)
+    alert("Form submit attempted! Add EmailJS keys to enable sending.");
+    setSuccess("Form submit attempted (EmailJS not configured).");
+    e.target.reset();
   };
 
   return (
