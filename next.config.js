@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone", // Netlify serverless deploy er jonno
-  reactStrictMode: true, // optional
+  reactStrictMode: true,
+  images: {
+    domains: ["i.scdn.co", "images.unsplash.com"], 
+  },
 };
 
 module.exports = nextConfig;
