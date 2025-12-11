@@ -3,19 +3,26 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenu, HiX } from "react-icons/hi";
-import { FaHome, FaInfoCircle, FaMusic, FaImages, FaMicrophone, FaEnvelope, FaFacebookF, FaYoutube } from "react-icons/fa";
+import {
+  FaHome,
+  FaInfoCircle,
+  FaMusic,
+  FaImages,
+  FaMicrophone,
+  FaEnvelope,
+  FaFacebookF,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Scroll lock for menu modal
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  // Detect scroll for blur + shadow effect on top navbar
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
@@ -40,135 +47,92 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed w-full z-50 text-white transition-all duration-500
-        ${scrolled
-          ? "bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(255,0,0,0.4)] translate-y-0"
-          : "bg-black"
-        }
-      `}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        {/* Left Menu Button */}
-        <div className="flex items-center">
+    <>
+      {/* NAVBAR */}
+      <nav
+        className={`fixed w-full z-[100] text-white transition-all duration-500
+          ${
+            scrolled
+              ? "bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(255,0,0,0.4)]"
+              : "bg-black"
+          }
+        `}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
           <button
             onClick={toggleMenu}
             className="text-white hover:text-red-500 transition duration-300"
           >
             {isOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
           </button>
-        </div>
 
-        {/* Center Band Name */}
-        <div className="text-2xl font-bold tracking-widest hover:text-red-500 transition duration-300 cursor-pointer">
-          Artcell
-        </div>
+          <div className="text-2xl font-bold tracking-widest hover:text-red-500 transition duration-300 cursor-pointer">
+            Artcell
+          </div>
 
-        {/* Right Social Links */}
-        <div className="hidden md:flex space-x-4">
-          {socialLinks.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition duration-300 text-lg"
-            >
-              {link.icon}
-            </a>
-          ))}
+          <div className="hidden md:flex space-x-4">
+            {socialLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition duration-300 text-lg"
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Slide-in Menu (Desktop) */}
+      {/* FIXED SIDEBAR OUTSIDE NAV — SOLID BLACK ALWAYS */}
       <div
-        className={`hidden md:flex fixed top-0 left-0 h-full w-64 bg-black  transform transition-transform duration-700 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} flex-col p-8 space-y-6`}
+        className={`fixed top-0 left-0 h-full w-56 lg:w-64 bg-black z-[9999] transition-transform duration-700 ease-in-out 
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="text-center text-2xl font-bold mb-6 text-red-500">Artcell</div>
-        <button
-          onClick={toggleMenu}
-          className="self-end text-white hover:text-red-500 transition duration-300"
-        >
-          <HiX className="w-6 h-6" />
-        </button>
+        <div className="p-8 space-y-6">
+          <div className="text-center text-2xl font-bold mb-6 text-red-500">Artcell</div>
 
-        {menuLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className={`text-xl py-2 flex items-center space-x-2 transition-all duration-300
-              ${pathname === link.href ? "text-red-500 font-semibold" : "text-white hover:text-red-500"}
-            `}
-            onClick={() => setIsOpen(false)}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-6 right-6 text-white hover:text-red-500 transition duration-300"
           >
-            <span className="text-red-500">{link.icon}</span>
-            <span className="group relative">
-              {link.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all group-hover:w-full"></span>
-            </span>
-          </a>
-        ))}
+            <HiX className="w-6 h-6" />
+          </button>
 
-        <div className="flex space-x-4 mt-4">
-          {socialLinks.map((link, idx) => (
+          {menuLinks.map((link) => (
             <a
-              key={idx}
+              key={link.name}
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition duration-300 text-xl"
+              className={`text-xl py-2 flex items-center space-x-2 transition-all duration-300
+                ${
+                  pathname === link.href
+                    ? "text-red-500 font-semibold"
+                    : "text-white hover:text-red-500"
+                }`}
+              onClick={toggleMenu}
             >
-              {link.icon}
+              <span className="text-red-500">{link.icon}</span>
+              <span>{link.name}</span>
             </a>
           ))}
+
+          <div className="flex space-x-4 mt-4">
+            {socialLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition duration-300 text-xl"
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Slide-in Menu (Mobile) */}
-      <div
-        className={`md:hidden fixed top-0 left-0 h-full bg-black z-50 transform transition-transform duration-700 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} w-3/5 flex flex-col justify-start p-6`}
-      >
-        <div className="text-2xl font-bold text-red-500 mb-8">Artcell</div>
-        <button
-          onClick={toggleMenu}
-          className="absolute top-6 right-6 text-white hover:text-red-500 transition duration-300"
-        >
-          <HiX className="w-6 h-6" />
-        </button>
-
-        {menuLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className={`text-xl py-4 flex items-center space-x-3 transition-all duration-300
-              ${pathname === link.href ? "text-red-500 font-semibold" : "text-white hover:text-red-500"}
-            `}
-            onClick={() => setIsOpen(false)}
-          >
-            <span className="text-red-500">{link.icon}</span>
-            <span className="group relative">
-              {link.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all group-hover:w-full"></span>
-            </span>
-          </a>
-        ))}
-
-        <div className="flex space-x-6 mt-8">
-          {socialLinks.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition duration-300 text-xl"
-            >
-              {link.icon}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
+    </>
   );
 }
