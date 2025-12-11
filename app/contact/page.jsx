@@ -12,7 +12,6 @@ export default function ContactPage() {
     e.preventDefault();
     setSuccess("");
 
-    // If EmailJS keys added later, replace this section with emailjs.sendForm(...)
     alert("Form submit attempted! Add EmailJS keys to enable sending.");
     setSuccess("Form submit attempted (EmailJS not configured).");
     e.target.reset();
@@ -32,10 +31,11 @@ export default function ContactPage() {
       </motion.h2>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
         {/* Contact Info */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}      // Side animation removed
+          whileInView={{ opacity: 1, y: 0 }}   // Fade + small lift animation
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
@@ -59,8 +59,8 @@ export default function ContactPage() {
 
         {/* Contact Form */}
         <motion.form
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}      // Side animation removed
+          whileInView={{ opacity: 1, y: 0 }}   // Fade + slight upward
           transition={{ duration: 0.8 }}
           onSubmit={handleSubmit}
           className="bg-white/5 backdrop-blur-md rounded-2xl p-6 space-y-6 shadow-[0_0_25px_rgba(255,0,0,0.3)] hover:shadow-[0_0_35px_rgba(255,0,0,0.7)] transition-all duration-500"
@@ -72,6 +72,7 @@ export default function ContactPage() {
             className="w-full p-3 rounded-lg bg-black/30 border border-red-500 focus:border-yellow-400 outline-none text-white placeholder-gray-400"
             required
           />
+
           <input
             type="email"
             placeholder="Your Email"
@@ -79,6 +80,7 @@ export default function ContactPage() {
             className="w-full p-3 rounded-lg bg-black/30 border border-red-500 focus:border-yellow-400 outline-none text-white placeholder-gray-400"
             required
           />
+
           <textarea
             placeholder="Your Message"
             name="message"
